@@ -50,6 +50,10 @@ Add password_change filter into your config/filters.yml:
 In your app.yml configure:
   * Custom Captcha parameters as described in it's own README
 
+  * Enable if you want remember cookie (disabled by default):
+    app_sf_guard_secure_plugin:
+      enable_remember_cookie: true
+
   * Enable module sfGuardChangePassword
     Edit apps/APP/config/settings.yml and add sfGuardChangePassword to enabled_modules array
       .settings:

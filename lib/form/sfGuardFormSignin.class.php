@@ -8,11 +8,15 @@ class sfGuardFormSignin extends sfGuardSecureFormSignin
 
     $this->setWidget('username', new sfWidgetFormInput());
     $this->setWidget('password', new sfWidgetFormInput(array('type' => 'password')));
-    $this->setWidget('remember', new sfWidgetFormInputCheckbox());
 
     $this->setValidator('username', new sfValidatorString());
     $this->setValidator('password', new sfValidatorString());
-    $this->setValidator('remember', new sfValidatorBoolean());
+
+    if ( sfConfig::get('app_sf_guard_secure_plugin_enable_remember_cookie',0))
+    {
+      $this->setWidget('remember', new sfWidgetFormInputCheckbox());
+      $this->setValidator('remember', new sfValidatorBoolean());
+    }
 
     $this->validatorSchema->setPostValidator(new sfGuardValidatorUser());
 
