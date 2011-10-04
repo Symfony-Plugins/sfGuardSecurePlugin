@@ -24,6 +24,7 @@ class sfGuardFormSignin extends sfGuardSecureFormSignin
 
 	  if ( isset ($this['captcha']) )
     {
+      $this->validatorSchema->setOption('allow_extra_fields', true); 
       $this->getWidgetSchema()->moveField('captcha', 'after', 'password');
     }
 
