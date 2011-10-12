@@ -17,15 +17,18 @@ class sfGuardFormSignin extends sfGuardSecureFormSignin
       $this->setWidget('remember', new sfWidgetFormInputCheckbox());
       $this->setValidator('remember', new sfValidatorBoolean());
     }
+    
+    
 
     $this->validatorSchema->setPostValidator(new sfGuardValidatorUser());
 
     $this->widgetSchema->setNameFormat('signin[%s]');
-
+    $this->validatorSchema->setOption('allow_extra_fields', true); 
 	  if ( isset ($this['captcha']) )
     {
-      $this->validatorSchema->setOption('allow_extra_fields', true); 
+      
       $this->getWidgetSchema()->moveField('captcha', 'after', 'password');
+      $this->validatorSchema->setOption('allow_extra_fields', true); 
     }
 
   }
