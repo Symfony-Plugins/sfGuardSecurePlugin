@@ -21,9 +21,9 @@ generator:
 
       form:
         class: sfGuardUserAdminForm
-        display:
-          "NONE":                   [username, password, password_again]
-          "Permissions and groups": [must_change_password, is_active, is_super_admin, sf_guard_user_group_list, sf_guard_user_permission_list]
+#        display:
+#          "NONE":                   [username, password, password_again]
+#          "Permissions and groups": [must_change_password, is_active, is_super_admin, sf_guard_user_group_list, sf_guard_user_permission_list]
 
       edit:
         title: Editing User "%%username%%"

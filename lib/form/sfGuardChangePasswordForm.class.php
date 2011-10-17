@@ -12,7 +12,7 @@ class sfGuardChangePasswordForm extends BasesfGuardUserForm
 
   public function configure()
   {
-    parent::configure();
+
 
     unset(
       $this['username'],
@@ -25,6 +25,8 @@ class sfGuardChangePasswordForm extends BasesfGuardUserForm
       $this['change_password_at'],
       $this['must_change_password']
     );
+
+
     $this->setWidgets(
       array(
         'username'            => new sfWidgetFormInputHidden(),

@@ -18,8 +18,10 @@ class sfGuardUserAdminForm extends BasesfGuardUserForm
       $this['last_login'],
       $this['created_at'],
       $this['salt'],
-      $this['algorithm']
+      $this['algorithm'],
+      $this['change_password_at']
     );
+
 
     $this->widgetSchema['sf_guard_user_group_list']->setLabel('Groups');
     $this->widgetSchema['sf_guard_user_permission_list']->setLabel('Permissions');
@@ -27,7 +29,6 @@ class sfGuardUserAdminForm extends BasesfGuardUserForm
     $this->widgetSchema['password'] = new sfWidgetFormInputPassword();
 
     $password_policy_validator_class = sfConfig::get('app_sf_guard_secure_password_validator', 'sfGuardSecurePasswordValidator');
-
     $this->setValidator('password', new $password_policy_validator_class(array('required'=>$this->isNew())));
     $this->widgetSchema['password_again'] = new sfWidgetFormInputPassword();
     $this->validatorSchema['password_again'] = clone $this->validatorSchema['password'];
@@ -39,7 +40,7 @@ class sfGuardUserAdminForm extends BasesfGuardUserForm
     // profile form?
     $profileFormClass = sfConfig::get('app_sf_guard_plugin_profile_class', 'sfGuardUserProfile').'Form';
     if (class_exists($profileFormClass))
-    {
+    { 
       $profileForm = new $profileFormClass();
       unset($profileForm[$this->getPrimaryKey()]);
       unset($profileForm[sfConfig::get('app_sf_guard_plugin_profile_field_name', 'user_id')]);

@@ -9,7 +9,7 @@ class sfGuardSecurePasswordValidator extends sfValidatorRegex
 {
   public function configure($options = array(), $messages = array())
   {
-    parent::configure($options, $messages);
+    parent::configure($options, $messages); 
 
     $this->setOption('pattern', $this->getPasswordPattern());
 
