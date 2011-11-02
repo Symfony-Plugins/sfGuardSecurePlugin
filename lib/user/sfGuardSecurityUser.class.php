@@ -125,6 +125,7 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
   public function signOut()
   {
     $this->getAttributeHolder()->removeNamespace('sfGuardSecurityUser');
+    $this->getAttributeHolder()->clear();
     $this->user = null;
     $this->clearCredentials();
     $this->setAuthenticated(false);
